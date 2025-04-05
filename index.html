@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pomodoro Timer</h1>
+
+        <div class="mode-toggle">
+            <span>Work</span>
+            <label class="switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider round"></span>
+            </label>
+            <span>Rest</span>
+        </div>
+
+        <div class="timer">
+            <div class="status-indicators">
+                <div class="status-row">
+                    <div class="status-dot"></div>
+                    <span class="status-text" id="lockStatus">Locked In</span>
+                </div>
+                <div class="status-row">
+                    <div class="status-dot"></div>
+                    <span class="status-text" id="vibeStatus">Vibe Check</span>
+                </div>
+                <div class="status-row">
+                    <div class="status-dot"></div>
+                    <span class="status-text" id="focusStatus">Laser Focused</span>
+                </div>
+            </div>
+
+            <div class="time">
+                <span id="minutes">30</span>:<span id="seconds">00</span>
+            </div>
+
+            <div class="timer-status">
+                <div id="status">Focus Time</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="toggle">Start</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <div class="settings">
+            <div class="setting">
+                <label for="focusTime">Focus Time (minutes):</label>
+                <input type="number" id="focusTime" value="30" min="1" max="60">
+            </div>
+            <div class="setting">
+                <label for="breakTime">Break Time (minutes):</label>
+                <input type="number" id="breakTime" value="5" min="1" max="30">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="initModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="status-indicator">
+                    <div class="pulse-dot"></div>
+                    <span>Work Time Initializing</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <label>
+                            <span>Will I lock in during this work time?</span>
+                            <input type="checkbox" class="commitment-check">
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <label>
+                            <span>Will I vibe out during this work time?</span>
+                            <input type="checkbox" class="commitment-check">
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <label>
+                            <span>Will I complete this work time at all costs?</span>
+                            <input type="checkbox" class="commitment-check">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="lockInBtn" disabled>Lock In & Start</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
