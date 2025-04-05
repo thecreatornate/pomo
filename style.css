@@ -165,8 +165,7 @@ button:hover {
 }
 
 #toggle {
-    background-color: #2196F3;
-    position: relative;
+    background-color: #4CAF50;
 }
 
 #toggle::before {
@@ -190,7 +189,7 @@ button:hover {
 }
 
 #toggle:hover {
-    background-color: #1976D2;
+    background-color: #45a049;
 }
 
 #toggle.active {
