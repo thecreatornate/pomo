@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme handling
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Check for saved theme preference or default to dark theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Theme toggle handler
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
     // DOM elements
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');

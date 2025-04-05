@@ -1,3 +1,28 @@
+:root {
+    /* Dark theme variables (default) */
+    --bg-color: #1e1e1e;
+    --container-bg: #252525;
+    --timer-bg: #2d2d2d;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #353535;
+    --input-bg: #252525;
+    --button-bg: #2d2d2d;
+    --button-hover: #353535;
+}
+
+[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --container-bg: #ffffff;
+    --timer-bg: #f8f9fa;
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --input-bg: #ffffff;
+    --button-bg: #f8f9fa;
+    --button-hover: #e9ecef;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,21 +31,23 @@
 }
 
 body {
-    background-color: #1e1e1e;
+    background-color: var(--bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #e0e0e0;
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
 }
 
 .container {
-    background-color: #252525;
+    background-color: var(--container-bg);
     padding: 2.5rem;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 500px;
+    position: relative;
 }
 
 h1 {
@@ -119,14 +146,14 @@ input:checked+.slider:before {
 .timer {
     margin: 2rem 0;
     padding: 2rem;
-    background-color: #2d2d2d;
+    background-color: var(--timer-bg);
     border-radius: 12px;
 }
 
 .time {
     font-size: 5rem;
     font-weight: 300;
-    color: #fff;
+    color: var(--text-color);
     text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     font-variant-numeric: tabular-nums;
     letter-spacing: -2px;
@@ -135,7 +162,7 @@ input:checked+.slider:before {
 .timer-status {
     margin-top: 1rem;
     font-size: 1rem;
-    color: #a0a0a0;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -147,7 +174,7 @@ input:checked+.slider:before {
 }
 
 button {
-    background-color: #2d2d2d;
+    background-color: var(--button-bg);
     color: #fff;
     border: none;
     padding: 0.8rem 2rem;
@@ -160,7 +187,7 @@ button {
 }
 
 button:hover {
-    background-color: #353535;
+    background-color: var(--button-hover);
     transform: translateY(-1px);
 }
 
@@ -209,7 +236,7 @@ button:hover {
 }
 
 .settings {
-    border-top: 1px solid #353535;
+    border-top: 1px solid var(--border-color);
     padding-top: 1.5rem;
     text-align: left;
 }
@@ -220,18 +247,18 @@ button:hover {
     align-items: center;
     margin-bottom: 1rem;
     padding: 0.5rem;
-    background-color: #2d2d2d;
+    background-color: var(--timer-bg);
     border-radius: 8px;
 }
 
 input[type="number"] {
     width: 70px;
     padding: 0.5rem;
-    border: 1px solid #404040;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     text-align: center;
-    background-color: #252525;
-    color: #fff;
+    background-color: var(--input-bg);
+    color: var(--text-color);
     font-size: 0.9rem;
 }
 
@@ -242,7 +269,7 @@ input[type="number"]:focus {
 
 label {
     font-size: 0.9rem;
-    color: #a0a0a0;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -407,6 +434,7 @@ label {
     .container {
         padding: 1.5rem;
         width: 95%;
+        margin: 2rem auto;
     }
 
     .time {
@@ -519,4 +547,54 @@ label {
 
 .status-text.failed {
     color: #f44336;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+
+#themeToggle:hover {
+    background-color: var(--button-bg);
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sun-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.moon-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+[data-theme="light"] .sun-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+[data-theme="light"] .moon-icon {
+    opacity: 0;
+    transform: scale(0.5);
 }
